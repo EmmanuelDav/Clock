@@ -14,20 +14,19 @@ import com.example.alarm.R
 import kotlinx.android.synthetic.main.fragment_alarm.*
 
 class AlarmFragment : Fragment() {
-    private val sAlarmDetails = ArrayList<AlarmDetails>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var v = inflater.inflate(R.layout.fragment_alarm,container,false)
-        var recyclerView = v.findViewById(R.id.AlarmRecyclerview) as RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val v = inflater.inflate(R.layout.fragment_alarm, container, false)
+        val recyclerView = v.findViewById(R.id.AlarmRecyclerview) as RecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val sAlarmDetails = ArrayList<AlarmDetails>()
+        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
+        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
         recyclerView.adapter = AlarmDetailsAdapter(sAlarmDetails)
-        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
-        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
-        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
-        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
-        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
-        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
-        sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
         return v
     }
 }
