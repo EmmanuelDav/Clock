@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.alarm.Adapters.PagerAdapter
 import com.example.alarm.Fragments.AlarmFragment
 import com.example.alarm.Fragments.ClockFragment
+import com.example.alarm.Fragments.StopWatchFragment
 import com.example.alarm.Fragments.TimerFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,12 +28,14 @@ class MainActivity : AppCompatActivity() {
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
         //Add fragments
         val pagerAdapter =
             PagerAdapter(supportFragmentManager)
         pagerAdapter.addFragment(AlarmFragment())
         pagerAdapter.addFragment(ClockFragment())
         pagerAdapter.addFragment(TimerFragment())
+        pagerAdapter.addFragment(StopWatchFragment())
         //setting adapter
         viewPager.adapter = pagerAdapter
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
