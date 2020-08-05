@@ -1,14 +1,11 @@
 package com.example.alarm.Fragments
 
-import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.alarm.R
 import kotlinx.android.synthetic.main.fragment_timer.*
@@ -26,6 +23,7 @@ class TimerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addButtons()
+
 
     }
 
@@ -61,17 +59,33 @@ class TimerFragment : Fragment() {
             display.setText(display.text.toString() + "0")
         }
         backClear.setOnClickListener {
-            display?.text.toString().dropLast(1)
+            display?.text?.clear()
         }
         changeVisibility.setOnClickListener {
-            if (buttonsView.visibility == View.VISIBLE){
-                setTimmerView.visibility = View.VISIBLE
+            if (buttonsView.visibility == View.VISIBLE) {
+                setTimerView.visibility = View.VISIBLE
                 buttonsView.visibility = View.GONE
-            }else{
+                startTimer.visibility = View.VISIBLE
+            } else {
                 buttonsView.visibility = View.VISIBLE
-                setTimmerView.visibility = View.GONE
+                setTimerView.visibility = View.GONE
+                startTimer.visibility = View.GONE
             }
         }
-        
+        startTimer.setOnClickListener {
+            val timer = object : CountDownTimer(30000, 1000) {
+                override fun onFinish() {
+                    timer.text = "Finished"
+                    var mediaPlayer = MediaPlayer.create(context, R.raw.song);
+                    mediaPlayer.start();
+                }
+                override fun onTick(millisUntilFinished: Long) {
+                    timer.text = display.text.toString()
+                    timer.text = (millisUntilFinished /1000).toString()
+                    seekBar.progress = (millisUntilFinished / 1000).toInt()
+                }
+            }
+            timer.start()
+        }
     }
 }

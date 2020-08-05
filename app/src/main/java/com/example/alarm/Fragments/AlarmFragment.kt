@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alarm.Adapters.AlarmDetailsAdapter
@@ -20,14 +19,17 @@ class AlarmFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_alarm, container, false)
-        val recyclerView = v.findViewById(R.id.AlarmRecyclerview) as RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        return inflater.inflate(R.layout.fragment_alarm, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val sAlarmDetails = ArrayList<AlarmDetails>()
+        AlarmRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        AlarmRecyclerview.adapter = AlarmDetailsAdapter(sAlarmDetails)
+
         sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
         sAlarmDetails.add(AlarmDetails("7:30", "Tuesday", true, "Am"))
-        recyclerView.adapter = AlarmDetailsAdapter(sAlarmDetails)
-        return v
     }
 }
 

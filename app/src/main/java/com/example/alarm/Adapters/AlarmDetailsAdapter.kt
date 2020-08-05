@@ -8,10 +8,10 @@ import com.example.alarm.Model.AlarmDetails
 import com.example.alarm.R
 import kotlinx.android.synthetic.main.alarm_details_view.view.*
 
-class AlarmDetailsAdapter(var alarmDetails: List<AlarmDetails>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AlarmDetailsAdapter(private var alarmDetails: List<AlarmDetails>) :
+    RecyclerView.Adapter<AlarmDetailsAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
             LayoutInflater.from(parent.context).inflate(R.layout.alarm_details_view, parent, false)
         return ViewHolder(v)
@@ -19,6 +19,10 @@ class AlarmDetailsAdapter(var alarmDetails: List<AlarmDetails>) :
 
     override fun getItemCount(): Int = alarmDetails.size
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var sAlarmDetails: AlarmDetails = alarmDetails[position]
+        holder.bind(sAlarmDetails)
+    }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(alarmDetails: AlarmDetails) {
@@ -28,13 +32,4 @@ class AlarmDetailsAdapter(var alarmDetails: List<AlarmDetails>) :
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        var sAlarmDetails: AlarmDetails = alarmDetails[position]
-        when
-            (holder) {
-            is ViewHolder -> {
-                holder.bind(sAlarmDetails)
-            }
-        }
-    }
 }
