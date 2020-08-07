@@ -23,15 +23,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         viewPager = findViewById(R.id.Pager)
-        tabLayout = findViewById(R.id.tablayout)
+        tabLayout = findViewById(R.id.tabLayout)
         //Adding tab icon
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_launcher_background))
+        tabLayout.addTab(tabLayout.newTab().setText("Alarm"))
+        tabLayout.addTab(tabLayout.newTab().setText("Clock"))
+        tabLayout.addTab(tabLayout.newTab().setText("Timer"))
+        tabLayout.addTab(tabLayout.newTab().setText("Stop Watch"))
         //Add fragments
-        val pagerAdapter =
-            PagerAdapter(supportFragmentManager)
+        val pagerAdapter = PagerAdapter(supportFragmentManager)
         pagerAdapter.addFragment(AlarmFragment())
         pagerAdapter.addFragment(ClockFragment())
         pagerAdapter.addFragment(TimerFragment())

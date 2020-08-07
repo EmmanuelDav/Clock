@@ -5,8 +5,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class PagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-   private val fragmentArrayList: ArrayList<Fragment> = ArrayList()
+class PagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(
+    fragmentManager,
+    FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+) {
+    private val fragmentArrayList: ArrayList<Fragment> = ArrayList()
 
     override fun getItem(position: Int): Fragment {
         return fragmentArrayList[position]
@@ -17,6 +20,6 @@ class PagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter
     }
 
     fun addFragment(fragment: Fragment) {
-         fragmentArrayList.add(fragment)
+        fragmentArrayList.add(fragment)
     }
 }

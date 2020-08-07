@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".Fragments.AlarmFragment">
-
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -20,7 +17,7 @@
             android:layout_marginLeft="5dp"
             style="@style/Bold"
             android:padding="5dp"
-            android:text="07:00"
+            android:text="Sun,10/27"
             android:textSize="27dp" />
 
         <TextView
@@ -31,33 +28,20 @@
             style="@style/Bold"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="5dp"
-            android:text="Am"
+            android:text="New York"
             android:textSize="16sp" />
 
-        <Switch
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="02:00Pm"
+            style="@style/Bold"
+            android:textSize="27dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp" />
 
-        <TextView
-            android:id="@+id/Date"
-            style="@style/Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Alarm in 6h,25min"
-            android:textSize="16sp" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:alpha="0.5"
-        android:background="@color/grey" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
