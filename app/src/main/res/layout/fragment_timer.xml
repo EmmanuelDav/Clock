@@ -8,16 +8,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
-        <me.tankery.lib.circularseekbar.CircularSeekBar
-            android:id="@+id/alarmProgress"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonHolders">
+
+        <ProgressBar
+            android:id="@+id/timerProgress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="300dp"
             android:layout_height="220dp"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
-        <DigitalClock
-            android:id="@+id/seekTime"
+            android:layout_centerVertical="true"
+            android:progress="100"
+            android:progressDrawable="@drawable/circle_progress_bar" />
+
+        <TextView
+            android:id="@+id/textTimer"
             style="@style/Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,17 +31,51 @@
             android:textSize="27dp" />
     </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Start"
-        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:id="@+id/buttonHolders"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorAccent"
-        android:background="@drawable/buttonshape"
-        android:layout_centerHorizontal="true"/>
+        android:orientation="horizontal">
 
 
+        <Button
+            android:id="@+id/reset_LapTimer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Reset"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/startTimer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Start"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/stop_resumeTimer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Stop"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </RelativeLayout>

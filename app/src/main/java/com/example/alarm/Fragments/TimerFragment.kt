@@ -1,8 +1,8 @@
 package com.example.alarm.Fragments
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +11,12 @@ import com.example.alarm.R
 import kotlinx.android.synthetic.main.fragment_timer.*
 
 class TimerFragment : Fragment() {
+    companion object {
+        var sStartTimer: Long = 60_000
+        var sTimerLeft: Long = sStartTimer
+        var sRunning: Boolean = false
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,27 +28,37 @@ class TimerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addButtons()
+        buttonPlay()
+    }
 
+
+    private fun buttonPlay() {
+        startTimer.setOnClickListener {
+            startTimer.visibility = View.GONE
+            stop_resumeTimer.visibility = View.VISIBLE
+            stop_resumeTimer.text = "Stop"
+            reset_LapTimer.visibility = View.VISIBLE
+            reset_LapTimer.text = "Lap"
+            startTimer()
+        }
 
     }
 
-    private fun addButtons() {
+    private fun startTimer() {
+        if (!sRunning) {
+            timerProgress.max = sStartTimer.toInt()
+            val timer = object : CountDownTimer(sTimerLeft,1_000) {
+                override fun onFinish() {
 
-//        startTimer.setOnClickListener {
-//            val timer = object : CountDownTimer(30000, 1000) {
-//                override fun onFinish() {
-//                    timer.text = "Finished"
-//                    var mediaPlayer = MediaPlayer.create(context, R.raw.song);
-//                    mediaPlayer.start();
-//                }
-//                override fun onTick(millisUntilFinished: Long) {
-//                    timer.text = display.text.toString()
-//                    timer.text = (millisUntilFinished /1000).toString()
-//                    seekBar.progress = (millisUntilFinished / 1000).toInt()
-//                }
-//            }
-//            timer.start()
-//        }
+                }
+
+                override fun onTick(millisUntilFinished: Long) {
+
+                }
+            }
+            sRunning = true
+        }
     }
+
+
 }
