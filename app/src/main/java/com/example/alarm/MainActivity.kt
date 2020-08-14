@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         tabLayout.addTab(tabLayout.newTab().setText("Alarm"))
         tabLayout.addTab(tabLayout.newTab().setText("Clock"))
         tabLayout.addTab(tabLayout.newTab().setText("Timer"))
-        tabLayout.addTab(tabLayout.newTab().setText("Stop Watch"))
+        tabLayout.addTab(tabLayout.newTab().setText("Watch"))
         //Add fragments
         val pagerAdapter = PagerAdapter(supportFragmentManager)
         pagerAdapter.addFragment(AlarmFragment())
@@ -49,7 +49,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.settting -> {
-                Toast.makeText(this, "setting is not implemented yet", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,
+                    "setting is not implemented yet",
+                    Toast.LENGTH_LONG).show()
             }
         }
         return super.onOptionsItemSelected(item)

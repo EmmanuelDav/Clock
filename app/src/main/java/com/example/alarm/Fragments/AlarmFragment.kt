@@ -27,11 +27,11 @@ class AlarmFragment : Fragment() {
         val sAlarmDetails = ArrayList<AlarmDetails>()
         AlarmRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         AlarmRecyclerview.adapter = AlarmDetailsAdapter(sAlarmDetails)
-
         sAlarmDetails.add(AlarmDetails("07:30", "Alarm 1h, 30min", true, "pm"))
         sAlarmDetails.add(AlarmDetails("01:50", "Alarm 7h, 29min", true, "Am"))
         sAlarmDetails.add(AlarmDetails("07:40", "Alarm 3h, 19min", true, "Am"))
         sAlarmDetails.add(AlarmDetails("03:30", "Alarm 6h, 29min", true, "Am"))
+        sAlarmDetails.add(AlarmDetails("06:20", "Alarm 0h, 27min", true, "pm"))
         sAlarmDetails.add(AlarmDetails("06:20", "Alarm 0h, 27min", true, "pm"))
     }
 }
