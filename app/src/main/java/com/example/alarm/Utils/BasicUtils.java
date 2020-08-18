@@ -1,10 +1,10 @@
-package com.example.alarm.helpers;
+package com.example.alarm.Utils;
 
 import android.content.Context;
 import android.os.Build;
 import android.os.PowerManager;
 
-public class SleepWakeScreen {
+public class BasicUtils {
 
     public static void screenWake(Context mContext) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
@@ -20,8 +20,8 @@ public class SleepWakeScreen {
                         (PowerManager.PARTIAL_WAKE_LOCK,
                                 "com.example.alarm:screen_lock");
             }
-
         }
-
     }
+
+
 }

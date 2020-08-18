@@ -4,16 +4,13 @@ public class ClockDetails {
 
     public String time;
     public String country;
-    public String timeConvention;
+    public String date;
 
-    public ClockDetails(String nTime, String nCountry, String nTimeConvention)
-    {
+    public ClockDetails(String nTime, String nCountry, String nDate) {
         time = nTime;
         country = nCountry;
-        timeConvention = nTimeConvention;
+        date = nDate;
     }
-
-    public ClockDetails(){}
 
     public String getTime() {
         return time;
@@ -31,11 +28,11 @@ public class ClockDetails {
         country = nCountry;
     }
 
-    public String getTimeConvention() {
-        return timeConvention;
+    public String getDate() {
+        return date;
     }
 
-    public void setTimeConvention(String nTimeConvention) {
-        timeConvention = nTimeConvention;
+    public void setDate(String nDate) {
+        date = nDate;
     }
 }

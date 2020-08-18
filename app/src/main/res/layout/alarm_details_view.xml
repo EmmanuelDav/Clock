@@ -20,8 +20,7 @@
             android:layout_marginLeft="5dp"
             style="@style/Bold"
             android:padding="5dp"
-            android:text="07:00"
-            android:textSize="27dp" />
+            android:text="07:00"/>
 
         <TextView
             android:id="@+id/amOrPm"

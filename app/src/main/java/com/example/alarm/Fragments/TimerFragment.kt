@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import com.example.alarm.ChannelIdApp
 import com.example.alarm.MainActivity
 import com.example.alarm.R
-import com.example.alarm.helpers.SleepWakeScreen
+import com.example.alarm.Utils.BasicUtils
 import kotlinx.android.synthetic.main.fragment_timer.*
 import java.util.*
 
@@ -158,7 +158,7 @@ class TimerFragment : Fragment() {
     }
 
     private fun ShowNotification() {
-        SleepWakeScreen.screenWake(context)
+        BasicUtils.screenWake(context)
         // create the channel id
 
         val notificationManager =
