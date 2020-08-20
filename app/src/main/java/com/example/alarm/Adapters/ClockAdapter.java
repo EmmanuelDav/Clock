@@ -63,7 +63,6 @@ public class ClockAdapter extends RecyclerView.Adapter<ClockAdapter.ViewHolder> 
 
     public void timer(){
         for (int i = 0; i<mClockDetails.size(); i++){
-            Log.d("Adapter","what is i "+i);
             mClockDetails.get(0).setTime(los_angeles);
             mClockDetails.get(1).setTime(europe);
             mClockDetails.get(2).setTime(newYork);

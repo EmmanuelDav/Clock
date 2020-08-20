@@ -31,5 +31,4 @@ class AlarmDetailsAdapter(private var alarmDetails: List<AlarmDetails>) :
             itemView.Date?.text = alarmDetails.dateForAlarm
         }
     }
-
 }

@@ -151,7 +151,6 @@ class TimerFragment : Fragment() {
                     sTimerLeft = fullTime
                     sStartTimer = sTimerLeft
                     updateTimerText()
-                    // but it continues from here
                 }
             }
         }
