@@ -8,13 +8,13 @@ import android.os.Build;
 
 public class ChannelIdApp extends Application {
 
-    public static final String CHANNEL_ID = "com.example.alarm";
+    public static final String CHANNEL_ID = "app_channel_id";
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 

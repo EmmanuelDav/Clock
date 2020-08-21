@@ -2,11 +2,11 @@ package com.example.alarm.Fragments
 
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Chronometer
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.alarm.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,27 +17,37 @@ class StopWatchFragment : Fragment() {
         var isRunning: Boolean = false
         var offPauseValue: Long = 0
     }
-
     var mchronometer: Chronometer? = null
     var startAlarm: FloatingActionButton? = null
+    var pause: ImageView? = null
+    var stopTimer: ImageView? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        val v = inflater.inflate(R.layout.fragment_stop_watch, container, false)
-        mchronometer = v.findViewById<Chronometer>(R.id.chronometer)
-        startAlarm = v.findViewById<FloatingActionButton>(R.id.startAlarm)
+        return inflater.inflate(R.layout.fragment_stop_watch, container, false);
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        mchronometer = activity?.findViewById<Chronometer>(R.id.chronometer)
+        startAlarm = activity?.findViewById<FloatingActionButton>(R.id.startAlarm)
+        pause = activity?.findViewById<ImageView>(R.id.pause)
+        stopTimer = activity?.findViewById<ImageView>(R.id.stopTimer)
 
         startAlarm?.setOnClickListener {
             startStopWatch()
         }
-//        pause.setOnClickListener {
-//            pauseStopWatch()
-//        }
-//
-//        stopTimer.setOnClickListener {
-//            resetStopWatch()
-//        }
-        return v;
+        pause?.setOnClickListener {
+            pauseStopWatch()
+        }
+
+        stopTimer?.setOnClickListener {
+            resetStopWatch()
+        }
     }
 
 

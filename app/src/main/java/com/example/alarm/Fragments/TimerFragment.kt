@@ -74,13 +74,13 @@ class TimerFragment : Fragment() {
             timerProgress.max = sStartTimer.toInt()
             timerProgress.progress = sTimerLeft.toInt()
             timer = object : CountDownTimer(sTimerLeft, 1_000) {
+
                 override fun onFinish() {
                     sTimerLeft = sStartTimer
                     sRunning = false
                     timerProgress.max = sStartTimer.toInt()
                     timerProgress.progress = sStartTimer.toInt()
                     updateTimerText()
-
                     ShowNotification()
                 }
 
@@ -184,6 +184,6 @@ class TimerFragment : Fragment() {
         val notification: Notification = builder.build()
         notification.flags = notification.flags or Notification.FLAG_INSISTENT
 
-        notificationManager.notify(762, notification)
+        notificationManager.notify(2, notification)
     }
 }
