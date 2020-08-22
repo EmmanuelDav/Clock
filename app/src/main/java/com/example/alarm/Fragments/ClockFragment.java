@@ -49,6 +49,7 @@ public class ClockFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clock, container, false);
         myDate = view.findViewById(R.id.testClock);
+        myDate.setText(LocalTime());
         mRecyclerView = view.findViewById(R.id.clockRecyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mClockArray = new ArrayList<>();
