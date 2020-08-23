@@ -16,13 +16,13 @@ class StopWatchFragment : Fragment() {
     companion object {
         var isRunning: Boolean = false
         var offPauseValue: Long = 0
+        var saveValue: Long = 0
     }
 
     var mchronometer: Chronometer? = null
     var startAlarm: FloatingActionButton? = null
     var pause: ImageView? = null
     var stopTimer: ImageView? = null
-    var chronBundle:Bundle? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +50,7 @@ class StopWatchFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (savedInstanceState != null){
+        if (savedInstanceState != null && isRunning){
             offPauseValue = savedInstanceState.getLong("Chronometer_Value")
             mchronometer!!.base = offPauseValue
             mchronometer!!.start()
@@ -66,7 +66,6 @@ class StopWatchFragment : Fragment() {
                 isRunning = true
             }
         }
-
     }
 
     private fun pauseStopWatch() {
@@ -86,27 +85,20 @@ class StopWatchFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putLong("Chronometer_Value", SystemClock.elapsedRealtime() - mchronometer?.base!!)
-    }
-
-
-    private fun returnBundle(): Bundle {
-        val bundle = Bundle()
-        bundle.getLong("forActivityRestart", offPauseValue)
-        return bundle
+        outState.putLong("Chronometer_Value", offPauseValue)
     }
 
     override fun onStop() {
         super.onStop()
-        chronBundle = returnBundle()
+        saveValue = (SystemClock.elapsedRealtime() - mchronometer?.base!!)
     }
 
     override fun onStart() {
         super.onStart()
-        if (isRunning && chronBundle != null){
-            offPauseValue = chronBundle!!.getLong("forActivityRestart")
-            mchronometer!!.base = SystemClock.elapsedRealtime() - mchronometer?.base!!
-            mchronometer!!.start()
+        if (isRunning) {
+            mchronometer?.base = SystemClock.elapsedRealtime() - saveValue
+            mchronometer?.start()
+            isRunning = true
         }
     }
 }
