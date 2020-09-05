@@ -10,11 +10,11 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:orientation="vertical"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical">
 
         <Chronometer
             android:id="@+id/chronometer"
@@ -25,10 +25,10 @@
             android:textSize="40dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/ChromRecycler"
-            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="150dp"
             tools:listitem="@layout/stopwatch_detail_view" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -40,12 +40,17 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_gravity="center_vertical"
             android:id="@+id/stopTimer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:src="@drawable/tryagain" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/mSetLap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -56,11 +61,11 @@
 
 
         <ImageView
-            android:layout_weight="1"
-            android:layout_width="0dp"
             android:id="@+id/pause"
-            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:src="@drawable/cancel" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

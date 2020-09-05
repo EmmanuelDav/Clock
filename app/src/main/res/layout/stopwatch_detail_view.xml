@@ -15,6 +15,7 @@
             android:layout_below="@+id/amOrPm"
             android:layout_marginLeft="5dp"
             android:padding="5dp"
+            android:textColor="@color/white"
             android:text="1."
             android:textSize="27dp" />
 
@@ -23,6 +24,7 @@
             android:layout_width="wrap_content"
             android:text="0:2pm"
             android:textSize="27dp"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -31,6 +33,7 @@
         <TextView
             android:id="@+id/Date"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"

@@ -2,15 +2,22 @@ package com.example.alarm.Fragments
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Chronometer
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+import androidx.recyclerview.widget.RecyclerView
+import com.example.alarm.Adapters.LapAdapter
+import com.example.alarm.Model.Lap
 import com.example.alarm.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.fragment_stop_watch.*
 
 class StopWatchFragment : Fragment() {
     companion object {
@@ -19,10 +26,14 @@ class StopWatchFragment : Fragment() {
         var saveValue: Long = 0
     }
 
+    private var mLapAdapter: LapAdapter? = null
+    private var mLapRecyclerView: RecyclerView? = null
+
     var mchronometer: Chronometer? = null
     var startAlarm: FloatingActionButton? = null
     var pause: ImageView? = null
     var stopTimer: ImageView? = null
+    var setLap: Button? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,27 +45,21 @@ class StopWatchFragment : Fragment() {
         mchronometer = view.findViewById<Chronometer>(R.id.chronometer)
         startAlarm = view.findViewById<FloatingActionButton>(R.id.startAlarm)
         pause = view.findViewById<ImageView>(R.id.pause)
+        setLap = view.findViewById(R.id.mSetLap)
         stopTimer = view.findViewById<ImageView>(R.id.stopTimer)
-
         startStopWatch()
-
+        initializeLapList(view)
         pause?.setOnClickListener {
             pauseStopWatch()
         }
-
         stopTimer?.setOnClickListener {
             resetStopWatch()
         }
-        return  view
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (savedInstanceState != null && isRunning){
-            offPauseValue = savedInstanceState.getLong("Chronometer_Value")
-            mchronometer!!.base = offPauseValue
-            mchronometer!!.start()
+        setLap?.setOnClickListener {
+            createLap()
+            Toast.makeText(context, "Hello", Toast.LENGTH_LONG).show()
         }
+        return view
     }
 
 
@@ -81,11 +86,7 @@ class StopWatchFragment : Fragment() {
         mchronometer?.base = SystemClock.elapsedRealtime()
         isRunning = false
         offPauseValue = 0
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putLong("Chronometer_Value", offPauseValue)
+        mLapAdapter?.clearLap()
     }
 
     override fun onStop() {
@@ -99,6 +100,20 @@ class StopWatchFragment : Fragment() {
             mchronometer?.base = SystemClock.elapsedRealtime() - saveValue
             mchronometer?.start()
             isRunning = true
+        }
+    }
+
+    private fun initializeLapList(view: View) {
+        mLapRecyclerView = view.findViewById(R.id.ChromRecycler) as RecyclerView
+        mLapRecyclerView!!.layoutManager = LinearLayoutManager(activity)
+        mLapAdapter = LapAdapter()
+        mLapRecyclerView!!.adapter = mLapAdapter
+    }
+
+    private fun createLap() {
+        mLapAdapter?.addLap(Lap(SystemClock.elapsedRealtime() - mchronometer?.base!!))
+        if (mLapAdapter!!.itemCount > 0) {
+            mLapRecyclerView!!.smoothScrollToPosition(mLapAdapter!!.itemCount - 1)
         }
     }
 }
